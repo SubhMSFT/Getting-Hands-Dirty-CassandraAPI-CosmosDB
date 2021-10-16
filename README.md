@@ -22,7 +22,7 @@ Key learning include:
 - Providing provisioned throughput (RU) at keyspace level.
 - Creating an Apache Cassandra Table in Azure Cosmos DB using API for Cassandra.
 - Providing provisioned throughtput (RU) at table level.
-- Best practices for creating a Primary Key in Cassandra (which includes 1 partitionKey + 0 or more Clustering Columns.
+- Best practices for creating a Primary Key in Cassandra (which includes 1 partitionKey + 0 or more Clustering Columns).
 - Creating a table with a single Primary Key.
 - Creating a table with a *Compound* Primary Key for a use-case wherein a single Primary Key will not work.
 - Inserting data into both tables: uprofile.user and weather.data.
