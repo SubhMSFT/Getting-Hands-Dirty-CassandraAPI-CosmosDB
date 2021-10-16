@@ -26,10 +26,12 @@ Key learning include:
 - Creating a table with a single Primary Key.
 - Creating a table with a *Compound* Primary Key for a use-case wherein a single Primary Key will not work.
 - Inserting data into both tables: uprofile.user and weather.data.
-- Query operations using a Basic query to filter using a simple filter across a Single Primary Key.
-- Query operations using a Complex query to filter using a complex filter across a Compound Primary Key.
-- Query Operation trying to query table by filtering by non-primary key. Flags an error which is as per Cassandra Database.
-- Exploring 2 possible solutions to solve the above problem - TO DO HOMEWORK.
+- Query operations using a simple filter across a Single Primary Key.
+- Query operations using a simple filter across a Compound Primary Key.
+- Query operations using a complex filter across a Compound Primary Key.
+- Query Operation trying to query table by filtering by non-primary key. Flags an error which is as per Cassandra Database Guidelines.
+- HOME WORK - To explore 2 possible solutions to solve the above problem.
+- HOME WORK - To explore increasing Cardinality of the weather.data table by replacing 'identity_id' with [Cassandra timestamp data type](https://docs.datastax.com/en/cql-oss/3.x/cql/cql_reference/timestamp_type_r.html).
 
 ## Running this Sample
 This sample is in .NET. For running this sample, all you need to do is to download the Visual Studio Solution file; and then make the following changes as mentioned below. You can also leverage this GitHub repo for getting up and running quickly > https://github.com/Azure-Samples/azure-cosmos-db-cassandra-dotnet-core-getting-started.
@@ -69,7 +71,8 @@ private static int CassandraPort = 10350;                                       
 
 ![Image4](media/image3.png)
 
-- Then proceed to testing Basic Query Operations on Keyspaces and Tables created in the earlier steps.
+- Then proceed in Visual Studio to test Basic Query Operations on Keyspaces and Tables created in the earlier steps. Finally, we perform a filter operation against weather.data table using a simple filter from a Compound Primary Key which retrieves us a result.
+
 ![Image5](media/image10.png)
 
 ## Validate in Azure Portal:
