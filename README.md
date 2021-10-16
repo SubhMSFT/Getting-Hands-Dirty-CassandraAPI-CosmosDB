@@ -19,9 +19,9 @@ If you're looking to get started quickly, you can find a range of SDK Support an
 ## What you learn from this Sample?
 Key learning include:
 - Creating an Apache Cassandra Keyspace in Azure Cosmos DB using API for Cassandra leveraging C#.
-- Providing provisioned throughput (RU) at keyspace level.
+- Providing provisioned throughput (RU) at Keyspace level.
 - Creating an Apache Cassandra Table in Azure Cosmos DB using API for Cassandra.
-- Providing provisioned throughtput (RU) at table level.
+- Providing provisioned throughput (RU) at table level.
 - Best practices for creating a Primary Key in Cassandra (which includes 1 partitionKey + 0 or more Clustering Columns).
 - Creating a table with a single Primary Key.
 - Creating a table with a *Compound* Primary Key for a use-case wherein a single Primary Key will not work.
@@ -130,7 +130,6 @@ You can replace identity_id with a timestamp data type variable; e.g. ts as well
 ```
 session.Execute("CREATE TABLE IF NOT EXISTS weather.data (station_id int, ts timestamp, temp int, state text, PRIMARY KEY (station_id, identity_id)) WITH cosmosdb_provisioned_throughput = 4000 AND CLUSTERING ORDER BY (ts DESC)");
 ```
-
 
 ## Feedback
 You can share any feedback at: sugh AT microsoft dot com
