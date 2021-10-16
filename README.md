@@ -1,4 +1,4 @@
-# CassandraAPICosmosDBHandsDirty
+# Getting-Hands-Dirty-CassandraAPI-CosmosDB
 
 **Summary:**
 This document provides guidance on getting your hands dirty using Azure Cosmos DB API for Cassandra Database.
