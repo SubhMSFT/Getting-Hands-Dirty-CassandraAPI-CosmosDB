@@ -34,7 +34,16 @@ Key learning include:
 This sample is in .NET. For running this sample, all you need to do is to download the Solution Project file; and then make the following changes as mentioned below. You can also leverage this GitHub repo for getting up and running quickly > https://github.com/Azure-Samples/azure-cosmos-db-cassandra-dotnet-core-getting-started.
 
 ## What you need for this Sample?
-You need an Azure subscription, a working Azure Cosmos DB Account with Cassandra API created, and working knowledge of both Apache Cassandra contructs, queries & limitations, and programming in .NET. It is assumed that you possess all these for enjoying and doing further R&D on this sample. Simply clone this git repo (or download as Zip).
+You need the following:
+- An Azure subscription.
+- Working Azure Cosmos DB Account with Cassandra API created.
+- Visual Studio Code / Visual Studio 2019 or similar IDE.
+- Working knowledge of both Apache Cassandra contructs, queries & limitations.
+- Working knowledge of programming in .NET.
+It is assumed that you possess all these for enjoying and doing further R&D on this sample. Simply clone this git repo (or download as Zip).
 
 ## A few things to do before deep-dive:
-1. 
+1. Open the .NET Solution Project file; ensure your Nuget packages are upto date. Specifically, ensure that '[CassandraCSharpDriver](https://www.nuget.org/packages/CassandraCSharpDriver/)' is installed. Your packages.config file should resemble the same as shown below:
+![Image2](media/packagesconfig.png)
+
+
