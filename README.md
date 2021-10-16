@@ -101,8 +101,17 @@ In the Azure portal, you should find screens similar to these and do further R&D
 In short, you cannot filter and execute a query against a Non-Primary Key in Apache Cassandra and the same holds true even if you're using Azure Cosmos DB's API for Cassandra Database.
 ![Image12](media/image9.png)
 
-- The same you can capture as an Error when executed in Visual Studio. I try and executing a similar Query, and it exits with an Error which reads the same.
+- The same you can capture as an Error when executed in Visual Studio. I try executing a similar Query from .NET SDK, and it exits with an Error which reads the same.
 ![Image13](media/image11.png)
+
+## Home Work:
+If you have reached thus far, give yourself a well deserved applause and a coffee break!
+You can extend the sample and try and find out how you could solve the above mentioned error.
+
+HINT: There are 2 possible solutions to the above:
+- Option #1: Add "ALLOW FILTERING" to the query which then solves the problem. Note: This is not a recommended option since this can cause a poor performance on massively large datasets. In fact, for supremely fast query read/write performance on Cassandra, it is highly recommended to build a correct Data Model justifying your use-case and having 1 highly optimized keyspace.table per query. Read this document as good guidance from the DataStax team: https://www.datastax.com/blog/allow-filtering-explained
+
+- Option #2:  
 
 ## Feedback
 You can share any feedback at: sugh AT microsoft dot com
