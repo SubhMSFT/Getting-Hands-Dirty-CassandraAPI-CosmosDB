@@ -44,9 +44,11 @@ It is assumed that you possess all these for enjoying and doing further R&D on t
 
 ## A few things to do before deep-dive:
 1. Open the Visual Studio Solution file; ensure your Nuget packages are upto date. Specifically, ensure that '[CassandraCSharpDriver](https://www.nuget.org/packages/CassandraCSharpDriver/)' is installed. Your packages.config file should resemble the same as shown below:
+
 ![Image2](media/packagesconfig.png)
 
 2.In the Program.cs file, edit the secion below. You will find these from your Azure portal, Cosmos DB account's Settings > Connection String:
+
 ![Image3](media/image1.png)
 
 ```
@@ -58,9 +60,16 @@ private static int CassandraPort = 10350;                                       
 ```
 
 ## Output in VS:
- 
- 
- 
+
+- Once run successfully, the program should run to create 2 Keyspaces and 2 Tables correspondingly in each Keyspace. It will also load data into the corresponding tables with the Keys thats have been created.
+- Keyspace 'uprofile' has table user with a single PrimaryKey; keyspace 'weather' has table data with a Compound PrimaryKey.
+- At this stage, you can pause to take a look at your resources in the Azure portal.
+
+![Image4](media/image3.png)
+
+- And then proceed to testing Basic Query Operations including one which throws an Error. You can research as to why this operation is not allowed in Cassandra DB.
+![Image5](media/image10.png)
+
 ## Validate in Azure Portal:
  
  
