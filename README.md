@@ -69,7 +69,7 @@ private static int CassandraPort = 10350;                                       
 
 ![Image4](media/image3.png)
 
-- And then proceed to testing Basic Query Operations including one which throws an Error. You can research as to why this operation is not allowed in Cassandra DB.
+- Then proceed to testing Basic Query Operations on Keyspaces and Tables created in the earlier steps.
 ![Image5](media/image10.png)
 
 ## Validate in Azure Portal:
