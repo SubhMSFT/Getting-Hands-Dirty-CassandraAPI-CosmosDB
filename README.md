@@ -111,10 +111,26 @@ In short, you cannot filter and execute a query against a Non-Primary Key in Apa
 If you have reached thus far, give yourself a well deserved applause and a coffee break!
 You can extend the sample and try and find out how you could solve the above mentioned error.
 
-HINT: There are 2 possible solutions to the above:
+1) **Solving Error**: HINT: There are 2 possible solutions to the above:
 - Option #1: Add "ALLOW FILTERING" to the query which then solves the problem. Note: This is not a recommended option since this can cause a poor performance on massively large datasets. In fact, for supremely fast query read/write performance on Cassandra, it is highly recommended to build a correct Data Model justifying your use-case and having 1 highly optimized keyspace.table per query. Read this document as good guidance from the DataStax team: https://www.datastax.com/blog/allow-filtering-explained
 
-- Option #2:  
+- Option #2:  In Azure Cosmos DB Cassandra API, you can choose which specific attributes you want to Index; this is called '[Concept of Secondary Indexes](https://docs.microsoft.com/en-us/azure/cosmos-db/cassandra/secondary-indexing)'. You can thereby create a Secondary Index and this will allow the query to run.
+Code to use: 
+
+```
+CREATE INDEX ON weather.data (state);
+describe table weather.data;
+```
+
+2) **Increasing Cardinality of weather.data table**. During creation of the data table, we use:
+```
+session.Execute("CREATE TABLE IF NOT EXISTS weather.data (station_id int, identity_id int, temp int, state text, PRIMARY KEY (station_id, identity_id)) WITH cosmosdb_provisioned_throughput = 4000 AND CLUSTERING ORDER BY (identity_id DESC)");
+```
+You can replace identity_id with a timestamp data type variable; e.g. ts as well. For real-life large dataset projects, it is recommended to use [Cassandra UUID & timeuuid functions](https://docs.datastax.com/en/cql-oss/3.3/cql/cql_reference/timeuuid_functions_r.html).
+```
+session.Execute("CREATE TABLE IF NOT EXISTS weather.data (station_id int, ts timestamp, temp int, state text, PRIMARY KEY (station_id, identity_id)) WITH cosmosdb_provisioned_throughput = 4000 AND CLUSTERING ORDER BY (ts DESC)");
+```
+
 
 ## Feedback
 You can share any feedback at: sugh AT microsoft dot com
