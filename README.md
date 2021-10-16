@@ -99,10 +99,10 @@ In the Azure portal, you should find screens similar to these and do further R&D
 
 - Next, we use the **CQL Query Builder** & **CQL Query Text** in Data Explorer, to query table weather.data with a Non-Primary Key filter. Please note that this table has a **Compound** Primary Key (station_id, identity_id). We now filter against 'temp' = 74. The result is as expected: An Error is thrown which says, 
 ```
-"{"readyState":4,"responseText":"\"{\\\"message\\\":\\\"Cannot execute this query as it might involve data filtering and thus may have unpredictable performance. If you want to execute this query despite the performance unpredictability, use ALLOW FILTERING\\\",\\\"activityId\\\":\\\"a0ef1896-5a3b-499a-8bbc-d8509a026691\\\"}\"","responseJSON":"{\"message\":\"Cannot execute this query as it might involve data filtering and thus may have unpredictable performance. If you want to execute this query despite the performance unpredictability, use ALLOW FILTERING\",\"activityId\":\"a0ef1896-5a3b-499a-8bbc-d8509a026691\"}","status":500,"statusText":"error"}
+{"readyState":4,"responseText":"\"{\\\"message\\\":\\\"Cannot execute this query as it might involve data filtering and thus may have unpredictable performance. If you want to execute this query despite the performance unpredictability, use ALLOW FILTERING\\\",\\\"activityId\\\":\\\"3b810dcd-ce7d-4483-9d43-51040f7103b5\\\"}\"","responseJSON":"{\"message\":\"Cannot execute this query as it might involve data filtering and thus may have unpredictable performance. If you want to execute this query despite the performance unpredictability, use ALLOW FILTERING\",\"activityId\":\"3b810dcd-ce7d-4483-9d43-51040f7103b5\"}","status":500,"statusText":"error"}
 ```
 In short, you cannot filter and execute a query against a Non-Primary Key in Apache Cassandra and the same holds true even if you're using Azure Cosmos DB's API for Cassandra Database.
-![Image12](media/image9.png)
+![Image12](media/image9a.png)
 
 - The same you can capture as an Error when executed in Visual Studio. I try executing a similar Query from .NET SDK, and it exits with an Error which reads the same.
 ![Image13](media/image11.png)
