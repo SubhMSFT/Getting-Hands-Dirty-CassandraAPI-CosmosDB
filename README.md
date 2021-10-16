@@ -31,19 +31,37 @@ Key learning include:
 - Solution to problem of querying table by filtering by non-primary key by creating a 'Secondary Index'.
 
 ## Running this Sample
-This sample is in .NET. For running this sample, all you need to do is to download the Solution Project file; and then make the following changes as mentioned below. You can also leverage this GitHub repo for getting up and running quickly > https://github.com/Azure-Samples/azure-cosmos-db-cassandra-dotnet-core-getting-started.
+This sample is in .NET. For running this sample, all you need to do is to download the Visual Studio Solution file; and then make the following changes as mentioned below. You can also leverage this GitHub repo for getting up and running quickly > https://github.com/Azure-Samples/azure-cosmos-db-cassandra-dotnet-core-getting-started.
 
 ## What you need for this Sample?
 You need the following:
-- An Azure subscription.
-- Working Azure Cosmos DB Account with Cassandra API created.
-- Visual Studio Code / Visual Studio 2019 or similar IDE.
+- An Azure subscription. If you do not have one, you can get a *free* one [here](https://azure.microsoft.com/en-in/free/) with USD 200 Credit.
+- Working Azure Cosmos DB Account with Cassandra API. Learn how to create one using Azure portal [here](https://docs.microsoft.com/en-us/azure/cosmos-db/cassandra/manage-data-dotnet) using this Tutorial.
+- Visual Studio Code / Visual Studio 2019 or similar IDE. You can download your VS [here](https://visualstudio.microsoft.com/downloads/).
 - Working knowledge of both Apache Cassandra contructs, queries & limitations.
 - Working knowledge of programming in .NET.
 It is assumed that you possess all these for enjoying and doing further R&D on this sample. Simply clone this git repo (or download as Zip).
 
 ## A few things to do before deep-dive:
-1. Open the .NET Solution Project file; ensure your Nuget packages are upto date. Specifically, ensure that '[CassandraCSharpDriver](https://www.nuget.org/packages/CassandraCSharpDriver/)' is installed. Your packages.config file should resemble the same as shown below:
+1. Open the Visual Studio Solution file; ensure your Nuget packages are upto date. Specifically, ensure that '[CassandraCSharpDriver](https://www.nuget.org/packages/CassandraCSharpDriver/)' is installed. Your packages.config file should resemble the same as shown below:
 ![Image2](media/packagesconfig.png)
 
+2.In the Program.cs file, edit the secion below. You will find these from your Azure portal, Cosmos DB account's Settings > Connection String:
+![Image3](media/image1.png)
 
+```
+// Cassandra Cluster configs section.
+private const string UserName = "<< ENTER YOUR USERNAME >>"; 
+private const string Password = "<< ENTER YOUR PRIMARY PASSWORD >>";
+private const string CassandraContactPoint = "<< ENTER YOUR CONTACT POINT >>";  // DnsName
+private static int CassandraPort = 10350;                                       // Leave this as it is
+```
+
+## Output in VS:
+ 
+ 
+ 
+## Validate in Azure Portal:
+ 
+ 
+ 
