@@ -81,7 +81,7 @@ In the Azure portal, you should find screens similar to these and do further R&D
 - All data correctly loaded into Table 'uprofile.user'.
 ![Image7](media/image4.png)
 
-- Query table uprofile.user with a simple filter (e.g. user_id).
+- Use the **CQL Query Builder** & **CQL Query Text** in Data Explorer, to query table uprofile.user with a simple filter (e.g. user_id = 7).
 ![Image8](media/image5.png)
 
 - All data correctly loaded into Table 'weather.data'.
