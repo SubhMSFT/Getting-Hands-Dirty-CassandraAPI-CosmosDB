@@ -61,7 +61,8 @@ private static int CassandraPort = 10350;                                       
 
 ## Output in VS:
 
-- Once run successfully, the program should run to create 2 Keyspaces and 2 Tables correspondingly in each Keyspace. It will also load data into the corresponding tables with the Keys thats have been created.
+- Once run successfully, the program should run to create 2 Keyspaces and 2 Tables respectively in each Keyspace.
+- Next, it will also load data into the corresponding tables with the Keys that have been created.
 - Keyspace 'uprofile' has table user with a single PrimaryKey; keyspace 'weather' has table data with a Compound PrimaryKey.
 - At this stage, you can pause to take a look at your resources in the Azure portal.
 
