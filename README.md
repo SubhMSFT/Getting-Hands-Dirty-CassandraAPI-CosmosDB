@@ -72,6 +72,32 @@ private static int CassandraPort = 10350;                                       
 ![Image5](media/image10.png)
 
 ## Validate in Azure Portal:
- 
- 
- 
+
+In the Azure portal, you should find screens similar to these and do further R&D in Data Explorer.
+
+- 2 Keyspaces and 2 Tables created. One with Shared Keyspace-level RU, and one with Provisioned Table-level RU.
+![Image6](media/image2.png)
+
+- All data correctly loaded into Table 'uprofile.user'.
+![Image7](media/image4.png)
+
+- Query table uprofile.user with a simple filter (e.g. user_id).
+![Image8](media/image5.png)
+
+- All data correctly loaded into Table 'weather.data'.
+![Image9](media/image6.png)
+
+
+
+
+## Feedback
+You can share any feedback at: sugh AT microsoft dot com
+
+## License & Terms of Use
+This is a free white paper released into the public domain. Anyone is free to use or distribute this white paper, for any purpose, commercial or non-commercial, and by any means. Same applies to the code in the repo.
+
+THE WHITE PAPER IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT.
+
+IN NO EVENT SHALL THE AUTHORS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE WHITE PAPER.
+
+Have fun & happy coding!
