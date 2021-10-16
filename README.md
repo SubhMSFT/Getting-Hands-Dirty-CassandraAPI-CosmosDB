@@ -95,7 +95,7 @@ In the Azure portal, you should find screens similar to these and do further R&D
 ![Image10](media/image7.png)
 
 - Next, we use the **CQL Query Builder** & **CQL Query Text** in Data Explorer, to query table weather.data with a complex filter. Please note that this table has a **Compound** Primary Key (station_id, identity_id). We now filter against 'station_id' = station_4 & 'identity_id' = 20210901 which represents our 'Noida' Weather Station in our dataset. The result is as expected and the row is extracted from the database.
-![Image11](media/image8.png)
+![Image11](media/image8a.png)
 
 - Next, we use the **CQL Query Builder** & **CQL Query Text** in Data Explorer, to query table weather.data with a Non-Primary Key filter. Please note that this table has a **Compound** Primary Key (station_id, identity_id). We now filter against 'temp' = 74. The result is as expected: An Error is thrown which says, 
 ```
