@@ -26,9 +26,10 @@ Key learning include:
 - Creating a table with a single Primary Key.
 - Creating a table with a *Compound* Primary Key for a use-case wherein a single Primary Key will not work.
 - Inserting data into both tables: uprofile.user and weather.data.
-- Basic Query operations using a Basic query
+- Query operations using a Basic query to filter using a simple filter across a Single Primary Key.
+- Query operations using a Complex query to filter using a complex filter across a Compound Primary Key.
 - Query Operation trying to query table by filtering by non-primary key. Flags an error which is as per Cassandra Database.
-- Solution to problem of querying table by filtering by non-primary key by creating a 'Secondary Index'.
+- Exploring 2 possible solutions to solve the above problem - TO DO HOMEWORK.
 
 ## Running this Sample
 This sample is in .NET. For running this sample, all you need to do is to download the Visual Studio Solution file; and then make the following changes as mentioned below. You can also leverage this GitHub repo for getting up and running quickly > https://github.com/Azure-Samples/azure-cosmos-db-cassandra-dotnet-core-getting-started.
@@ -93,6 +94,15 @@ In the Azure portal, you should find screens similar to these and do further R&D
 - Next, we use the **CQL Query Builder** & **CQL Query Text** in Data Explorer, to query table weather.data with a complex filter. Please note that this table has a **Compound** Primary Key (station_id, identity_id). We now filter against 'station_id' = station_4 & 'identity_id' = 20210901 which represents our 'Noida' Weather Station in our dataset. The result is as expected and the row is extracted from the database.
 ![Image11](media/image8.png)
 
+- Next, we use the **CQL Query Builder** & **CQL Query Text** in Data Explorer, to query table weather.data with a Non-Primary Key filter. Please note that this table has a **Compound** Primary Key (station_id, identity_id). We now filter against 'temp' = 74. The result is as expected: An Error is thrown which says, 
+```
+"{"readyState":4,"responseText":"\"{\\\"message\\\":\\\"Cannot execute this query as it might involve data filtering and thus may have unpredictable performance. If you want to execute this query despite the performance unpredictability, use ALLOW FILTERING\\\",\\\"activityId\\\":\\\"a0ef1896-5a3b-499a-8bbc-d8509a026691\\\"}\"","responseJSON":"{\"message\":\"Cannot execute this query as it might involve data filtering and thus may have unpredictable performance. If you want to execute this query despite the performance unpredictability, use ALLOW FILTERING\",\"activityId\":\"a0ef1896-5a3b-499a-8bbc-d8509a026691\"}","status":500,"statusText":"error"}
+```
+In short, you cannot filter and execute a query against a Non-Primary Key in Apache Cassandra and the same holds true even if you're using Azure Cosmos DB's API for Cassandra Database.
+![Image12](media/image9.png)
+
+- The same you can capture as an Error when executed in Visual Studio. I try and executing a similar Query, and it exits with an Error which reads the same.
+![Image13](media/image11.png)
 
 ## Feedback
 You can share any feedback at: sugh AT microsoft dot com
