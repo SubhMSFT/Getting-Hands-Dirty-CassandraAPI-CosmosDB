@@ -60,6 +60,7 @@ Key learning include:
 - Query operations using a simple filter across a Compound Primary Key.
 - Query operations using a complex filter across a Compound Primary Key.
 - Query Operation trying to query table by filtering by non-primary key. Flags an error which is as per Cassandra Database Guidelines.
+- Calculating Request Unit (throughput) in Azure Cosmos DB API for Cassandra via .NET SDK for different operations.
 - HOME WORK - To explore 2 possible solutions to solve the above problem.
 - HOME WORK - To explore increasing Cardinality of the weather.data table by replacing 'identity_id' with [Cassandra timestamp data type](https://docs.datastax.com/en/cql-oss/3.x/cql/cql_reference/timestamp_type_r.html).
 
@@ -171,7 +172,11 @@ private static int CassandraPort = 10350;                                       
 
 ![Image4](media/image3.png)
 
-- Then proceed in Visual Studio to test Basic Query Operations on Keyspaces and Tables created in the earlier steps. Finally, we perform a filter operation against weather.data table using a simple filter from a Compound Primary Key which retrieves us a result.
+- When you perform operations against the Azure Cosmos DB Cassandra API, the RU charge is returned in the incoming payload as a field named RequestCharge. In .NET SDK, you can retrieve the incoming payload under the Info property of a RowSet object. You can perform Operations and test RU on VS console.
+
+![Image4a](media/image21.png)
+
+- Finally, proceed in Visual Studio to test Basic Query Operations on Keyspaces and Tables created in the earlier steps. Finally, we perform a filter operation against weather.data table using a simple filter from a Compound Primary Key which retrieves us a result.
 
 ![Image5](media/image10.png)
 
