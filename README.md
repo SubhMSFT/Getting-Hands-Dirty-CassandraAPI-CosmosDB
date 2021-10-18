@@ -52,7 +52,7 @@ Key learning include:
 - Providing provisioned throughput (RU) at Keyspace level.
 - Creating an Apache Cassandra Table in Azure Cosmos DB using API for Cassandra.
 - Providing provisioned throughput (RU) at table level.
-- Best practices for creating a Primary Key in Cassandra (which includes 1 partitionKey + 0 or more Clustering Columns).
+- Best practices for creating a Primary Key in Cassandra (which includes 1 partitionKey + 0 or more Clustering Columns). An in-depth technical discussion on Apache Cassandra Data Model is beyond the scope of this document, but if you're seriously interested, then I highly recommend going through the links in 'Further Study' section.
 - Creating a table with a single Primary Key.
 - Creating a table with a *Compound* Primary Key for a use-case wherein a single Primary Key will not work.
 - Inserting data into both tables: uprofile.user and weather.data.
@@ -164,7 +164,6 @@ private static int CassandraPort = 10350;                                       
 ```
 
 ## Output in VS
-
 - Once run successfully, the program should run to create 2 Keyspaces and 2 Tables respectively in each Keyspace.
 - Next, it will also load data into the corresponding tables with the Keys that have been created.
 - Keyspace 'uprofile' has table user with a single PrimaryKey; keyspace 'weather' has table data with a Compound PrimaryKey.
@@ -184,7 +183,6 @@ private static int CassandraPort = 10350;                                       
 
 
 ## Validate in Azure Portal
-
 In the Azure portal, you should find screens similar to these and do further R&D in Data Explorer.
 
 - 2 Keyspaces and 2 Tables created. One with Shared Keyspace-level RU, and one with Provisioned Table-level RU.
@@ -238,6 +236,13 @@ You can replace identity_id with a timestamp data type variable; e.g. ts as well
 ```
 session.Execute("CREATE TABLE IF NOT EXISTS weather.data (station_id int, ts timestamp, temp int, state text, PRIMARY KEY (station_id, identity_id)) WITH cosmosdb_provisioned_throughput = 4000 AND CLUSTERING ORDER BY (ts DESC)");
 ```
+
+## Links for Further Study
+1. How to Create a Cassandra Data Model by DataStax (Patrick McFadin and Jeff Carpenter will develop a Cassandra data model for a real application—step by step): https://www.youtube.com/watch?v=4D39wJu5Too
+2. Official documentation of Microsoft for Azure Cosmos DB API for Cassandra: https://docs.microsoft.com/en-us/azure/cosmos-db/cassandra/cassandra-introduction
+3. 2018 video of Azure Friday | Cassandra API for Azure Cosmos DB (Join Kirill Gavrylyuk and Scott Hanselman to learn about native support for Apache Cassandra API in Azure Cosmos DB with wire protocol level compatibility): https://www.youtube.com/watch?v=gFxJnegGG0o
+4. 2018 Azure Cosmos DB Cassandra API Overview by Govind Kanshi: https://www.youtube.com/watch?v=p3jSVi3ERFg
+5. 2020 Introduction to Cassandra API in Azure Cosmos DB by Theo van Kraay: https://www.youtube.com/watch?v=3WOFJjU126s
 
 ## Feedback
 You can share any feedback at: sugh AT microsoft dot com
