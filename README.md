@@ -176,9 +176,12 @@ private static int CassandraPort = 10350;                                       
 
 ![Image4a](media/image3b.png)
 
-- Finally, proceed in Visual Studio to test Basic Query Operations on Keyspaces and Tables created in the earlier steps. Finally, we perform a filter operation against weather.data table using a simple filter from a Compound Primary Key which retrieves us a result.
+- We then proceed in VS to test Basic Query Operations on Keyspaces and Tables created in the earlier steps. Finally, we perform a filter operation against weather.data table using a simple filter from a Compound Primary Key which retrieves us a result. You can map the different RU consumption per operation that you do as you go along.
 
 ![Image5](media/image10a.png)
+
+- Finally, we execute a filter against a Non-Primary Key and it throws an error and exists. This is owing to the reason, that Non-Primary Keys cannot be used in a Filter in a Query in the Apache Cassandra database. There are possible solutions given below which you can tinker with to solve this issue.
+
 
 ## Validate in Azure Portal
 
