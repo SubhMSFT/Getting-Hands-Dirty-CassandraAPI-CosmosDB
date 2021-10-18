@@ -172,7 +172,7 @@ private static int CassandraPort = 10350;                                       
 
 ![Image4](media/image3a.png)
 
-- When you perform operations against the Azure Cosmos DB Cassandra API, the RU charge is returned in the incoming payload as a field named RequestCharge. In .NET SDK, you can retrieve the incoming payload under the Info property of a RowSet object. You can perform Operations and test RU on VS console.
+- When you perform operations against the Azure Cosmos DB Cassandra API, the RU charge is returned in the incoming payload as a field named RequestCharge. In .NET SDK, you can retrieve the incoming payload under the **Info property of a RowSet object**. You can perform Operations and test RU on VS console.
 
 ![Image4a](media/image3b.png)
 
