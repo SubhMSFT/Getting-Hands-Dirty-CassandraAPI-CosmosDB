@@ -1,7 +1,35 @@
 # Getting-Hands-Dirty-CassandraAPI-CosmosDB
 
 **Summary:**
-This document provides guidance on getting your hands dirty using Azure Cosmos DB API for Cassandra Database.
+This document provides guidance on getting your hands dirty using Azure Cosmos DB API for Apache Cassandra Database.
+
+# Contents
+
+[Introduction](#Introduction)
+
+[About Azure Cosmos DB](#about-azure-cosmos-db) 
+
+[Getting Started](#getting-started)
+
+[What you learn from this Sample](#what-you-learn-from-this-sample)
+
+[Core Differences between Apache Cassandra and Azure Cosmos DB API for Cassandra](#core-differences-between-apache-cassandra-and-azure-cosmos-db-api-for-cassandra)
+
+[Running this Sample](#running-this-sample)
+
+[What you need for this Sample?](#what-you-need-for-this-sample)
+
+[A few things to do before deep-dive](#a-few-things-to-do-before-deep-dive)
+
+[Output in VS](#output-in-vs)
+
+[Validate in Azure Portal](#validate-in-azure-portal)
+
+[Home Work](#home-work)
+
+[Feedback](#feedback)
+
+[License/Terms of Use](#license--terms-of-use)
 
 ## Introduction
 Azure Cosmos DB Cassandra API can be used as the data store for apps written for [Apache Cassandra](https://cassandra.apache.org/_/index.html). This means that by using existing Apache drivers compliant with CQLv4, your existing Cassandra application can now communicate with the Azure Cosmos DB Cassandra API. In many cases, you can switch from using Apache Cassandra to using Azure Cosmos DB's Cassandra API, by just changing a connection string.
@@ -33,6 +61,68 @@ Key learning include:
 - HOME WORK - To explore 2 possible solutions to solve the above problem.
 - HOME WORK - To explore increasing Cardinality of the weather.data table by replacing 'identity_id' with [Cassandra timestamp data type](https://docs.datastax.com/en/cql-oss/3.x/cql/cql_reference/timestamp_type_r.html).
 
+## Core Differences between Apache Cassandra and Azure Cosmos DB API for Cassandra
+Though both allow you to use the Apache Cassandra database, but there's some inherent differences 'Architecturally', 'Conceptually' and 'Realistically' that you must be aware of for using the Azure Cosmos DB API for Cassandra. The core differences have been outlined in the **Comments** section in Visual Studio Solution Program.cs file in this repo. Mentioning it once again for relevance.
+
+1. The Azure Cosmos DB Cassandra API is compatible with CQL v3.11 API (backward-compatible with version 2.x).
+   Read more > https://docs.microsoft.com/en-us/azure/cosmos-db/cassandra/cassandra-support#cassandra-protocol
+            
+2. Size limits:
+a) total size of data stored in a table on Cosmos = NONE. RULE is: Add TB/PBs of data as long as 'partitionKey' size limits are respected.
+b) total data size of entity (row) should not exceed 2MB.
+c) total data size of a single partitionKey cannot exceed 20GB.
+            
+3. In OSS/DataStax, at Keyspace creation level, you can choose options: replica replacement strategy (SimpleStrategy, NetworkTopologyStrategy), replication factor & durable writes setting.
+```
+CREATE KEYSPACE uprofile WITH REPLICATION = { 'class' : 'NetworkTopologyStrategy', 'datacenter1' : 1 }   
+```
+In Cosmos, all options are ignored currently (class, replicationstrategy, replicationfactor, datacenter).
+What Cosmos does is:
+- Cosmos underlying Global distribution replication method to add the regions.
+- If you need the cross-region, need to do at account level with PowerShell, CLI, or Azure portal.
+- Durable_writes can't be disabled because Azure Cosmos DB ensures every write is durable. 
+- In every region, Cosmos replicates the data across the replica set that is made up of four replicas and this replica set configuration can't be modified.
+
+4. In Cosmos, throughput (RU) can be set both at Keyspace and Table level.
+```
+CREATE KEYSPACE  sampleks WITH REPLICATION = {  'class' : 'SimpleStrategy'} AND cosmosdb_provisioned_throughput=2000;
+CREATE TABLE sampleks.t1 (user_id int PRIMARY KEY, lastname text) WITH cosmosdb_provisioned_throughput=2000;
+```
+
+5. In OSS/DataStax, recommended PrimaryKey (partitionKey) should be < 100MB-limit. 
+   In Cosmos, single partitionKey size can be of limit 20GB (per logical partition), 30GB (per physical partition). Each PPartition = 10,000 RUs.
+   
+6. In OSS/DataStax, Cassandra a replication factor is mentioned during creation time; e.g. 1.
+   In Cosmos, there is (by default) a replication factor = 4 (quorum of 3). Microsoft manages replica sets, you can sleep nicely at night.
+            
+7. In OSS/DataStax, Cassandra has an important concept of tokens (# of partitionKey(fx)). TokenRing = murmur3 64 byte hash, with values ranging from -2^63 to -2^63 - 1.
+   In Cosmos, we use a similar concept, but we use a different # token, and token ring range is different internally (larger), but externally same.
+            
+8. Difference in CQL Functions:
+    a) Cosmos supports token as a projection/selector, and only allows token(pk) on the left-hand side of a where clause. 
+    e.g. WHERE token(pk) > 1024 is OK.
+    e.g. WHERE token(pk) > token(100) is **not** supported.
+    b) The cast() function is not nestable in Cassandra API.
+    e.g. SELECT cast(count as double) FROM myTable is supported
+    e.g. SELECT avg(cast(count as double)) FROM myTable is **not** supported.
+    c) Custom timestamps and TTL specified with the USING option are applied at a row level (and not per cell).
+    d) Aggregate functions work on regular columns, but aggregates on clustering columns are not supported.
+    Read more > https://docs.microsoft.com/en-us/azure/cosmos-db/cassandra/cassandra-support#cql-functions
+
+9. Specifics around difference between OSS & Cosmos DB API CQL commands > https://docs.microsoft.com/en-us/azure/cosmos-db/cassandra/cassandra-support#cql-commands
+
+10. In Cosmos, all attributes are 'Indexed' by Default for all APIs (e.g. Core SQL API). Cassandra API does *not* work in the same manner.
+    In other words, Cassandra API does **not** index all attributes by default. Cassandra supports 'Secondary Indexing'.
+    Read more > https://docs.microsoft.com/en-us/azure/cosmos-db/cassandra/secondary-indexing
+    
+11. In Cosmos, filtering a Q against a non-PrimaryKey is **not** allowed (as per Cassandra best practices). 
+    See code to fix it either by creating 'Secondary Index' OR 'ALLOW FILTERING'.
+            
+12. Cassandra API on Azure Cosmos DB supports only TLSv1.2
+
+13. An in-depth difference between OSS/DataStax Cassandra Consistency Level and Cosmos DB Cassandra API Consistency Levels.
+    Read more > https://docs.microsoft.com/en-us/azure/cosmos-db/cassandra/apache-cassandra-consistency-mapping#mapping-consistency-levels
+
 ## Running this Sample
 This sample is in .NET. For running this sample, all you need to do is to download the Visual Studio Solution file; and then make the following changes as mentioned below. You can also leverage this GitHub repo for getting up and running quickly > https://github.com/Azure-Samples/azure-cosmos-db-cassandra-dotnet-core-getting-started.
 
@@ -45,7 +135,7 @@ You need the following:
 - Working knowledge of programming in .NET.
 It is assumed that you possess all these for enjoying and doing further R&D on this sample. Simply clone this git repo (or download as Zip).
 
-## A few things to do before deep-dive:
+## A few things to do before deep-dive
 1. Open the Visual Studio Solution file; ensure your Nuget packages are upto date. Specifically, ensure that '[CassandraCSharpDriver](https://www.nuget.org/packages/CassandraCSharpDriver/)' is installed. Your packages.config file should resemble the same as shown below:
 
 ![Image2](media/packagesconfig.png)
@@ -62,7 +152,7 @@ private const string CassandraContactPoint = "<< ENTER YOUR CONTACT POINT >>";  
 private static int CassandraPort = 10350;                                       // Leave this as it is
 ```
 
-## Output in VS:
+## Output in VS
 
 - Once run successfully, the program should run to create 2 Keyspaces and 2 Tables respectively in each Keyspace.
 - Next, it will also load data into the corresponding tables with the Keys that have been created.
@@ -75,7 +165,7 @@ private static int CassandraPort = 10350;                                       
 
 ![Image5](media/image10.png)
 
-## Validate in Azure Portal:
+## Validate in Azure Portal
 
 In the Azure portal, you should find screens similar to these and do further R&D in Data Explorer.
 
@@ -107,7 +197,7 @@ In short, you cannot filter and execute a query against a Non-Primary Key in Apa
 - The same you can capture as an Error when executed in Visual Studio. I try executing a similar Query from .NET SDK, and it exits with an Error which reads the same.
 ![Image13](media/image11.png)
 
-## Home Work:
+## Home Work
 If you have reached thus far, give yourself a well deserved applause and a coffee break!
 You can extend the sample and try and find out how you could solve the above mentioned error.
 
