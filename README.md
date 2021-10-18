@@ -80,10 +80,10 @@ CREATE KEYSPACE uprofile WITH REPLICATION = { 'class' : 'NetworkTopologyStrategy
 ```
 In Cosmos, all options are ignored currently (class, replicationstrategy, replicationfactor, datacenter).
 What Cosmos does is:
-- Cosmos underlying Global distribution replication method to add the regions.
-- If you need the cross-region, need to do at account level with PowerShell, CLI, or Azure portal.
-- Durable_writes can't be disabled because Azure Cosmos DB ensures every write is durable. 
-- In every region, Cosmos replicates the data across the replica set that is made up of four replicas and this replica set configuration can't be modified.
+* Cosmos uses the underlying Global distribution replication method to add the regions.
+  * If you need the cross-region, need to do at account level with PowerShell, CLI, or Azure portal.
+* Durable_writes can't be disabled because Azure Cosmos DB ensures every write is durable. * 
+* In every region, Cosmos replicates the data across the replica set that is made up of four replicas and this replica set configuration can't be modified.
 
 4. In Cosmos, throughput (RU) can be set both at Keyspace and Table level.
 ```
