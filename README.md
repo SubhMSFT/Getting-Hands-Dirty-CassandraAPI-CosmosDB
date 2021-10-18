@@ -3,6 +3,8 @@
 **Summary:**
 This document provides guidance on getting your hands dirty using Azure Cosmos DB API for Apache Cassandra Database.
 
+![Image20](media/cassandraapi.png)
+
 # Contents
 
 [Introduction](#Introduction)
