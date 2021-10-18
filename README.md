@@ -29,6 +29,8 @@ This document provides guidance on getting your hands dirty using Azure Cosmos D
 
 [Home Work](#home-work)
 
+[Links for Further Study](#links-for-further-study)
+
 [Feedback](#feedback)
 
 [License/Terms of Use](#license--terms-of-use)
@@ -52,7 +54,7 @@ Key learning include:
 - Providing provisioned throughput (RU) at Keyspace level.
 - Creating an Apache Cassandra Table in Azure Cosmos DB using API for Cassandra.
 - Providing provisioned throughput (RU) at table level.
-- Best practices for creating a Primary Key in Cassandra (which includes 1 partitionKey + 0 or more Clustering Columns). An in-depth technical discussion on Apache Cassandra Data Model is beyond the scope of this document, but if you're seriously interested, then I highly recommend going through the links in 'Further Study' section.
+- Best practices for creating a Primary Key in Cassandra (which includes 1 partitionKey + 0 or more Clustering Columns). An in-depth technical discussion on Apache Cassandra Data Model is beyond the scope of this document, but if you're seriously interested, then I highly recommend going through the links in [Further Study](#links-for-further-study).
 - Creating a table with a single Primary Key.
 - Creating a table with a *Compound* Primary Key for a use-case wherein a single Primary Key will not work.
 - Inserting data into both tables: uprofile.user and weather.data.
