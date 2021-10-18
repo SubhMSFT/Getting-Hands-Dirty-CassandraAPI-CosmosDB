@@ -142,8 +142,8 @@ You need the following:
 - An Azure subscription. If you do not have one, you can get a *free* one [here](https://azure.microsoft.com/en-in/free/) with USD 200 Credit.
 - Working Azure Cosmos DB Account with Cassandra API. Learn how to create one using Azure portal [here](https://docs.microsoft.com/en-us/azure/cosmos-db/cassandra/manage-data-dotnet) using this Tutorial.
 - Visual Studio Code / Visual Studio 2019 or similar IDE. You can download your VS [here](https://visualstudio.microsoft.com/downloads/).
-- Working knowledge of both Apache Cassandra contructs, queries & limitations.
-- Working knowledge of programming in .NET.
+- Working knowledge of Apache Cassandra contructs, queries & limitations.
+- Working knowledge of programming in C#.
 It is assumed that you possess all these for enjoying and doing further R&D on this sample. Simply clone this git repo (or download as Zip).
 
 ## A few things to do before deep-dive
