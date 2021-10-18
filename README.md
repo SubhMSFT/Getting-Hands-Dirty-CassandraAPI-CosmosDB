@@ -102,11 +102,19 @@ CREATE TABLE sampleks.t1 (user_id int PRIMARY KEY, lastname text) WITH cosmosdb_
             
 8. Difference in CQL Functions:
 * Cosmos supports token as a projection/selector, and only allows token(pk) on the left-hand side of a where clause. 
-``` WHERE token(pk) > 1024 is OK. ```
-``` WHERE token(pk) > token(100) is **not** supported. ```
+```
+WHERE token(pk) > 1024 is OK.
+```
+```
+WHERE token(pk) > token(100) is **not** supported.
+```
 * The cast() function is not nestable in Cassandra API.
-``` SELECT cast(count as double) FROM myTable is supported. ```
-``` SELECT avg(cast(count as double)) FROM myTable is **not** supported. ```
+```
+SELECT cast(count as double) FROM myTable is supported.
+```
+```
+SELECT avg(cast(count as double)) FROM myTable is **not** supported.
+```
 * Custom timestamps and TTL specified with the USING option are applied at a row level (and not per cell).
 * Aggregate functions work on regular columns, but aggregates on clustering columns are not supported.
   Read more > https://docs.microsoft.com/en-us/azure/cosmos-db/cassandra/cassandra-support#cql-functions
