@@ -170,11 +170,11 @@ private static int CassandraPort = 10350;                                       
 - Keyspace 'uprofile' has table user with a single PrimaryKey; keyspace 'weather' has table data with a Compound PrimaryKey.
 - At this stage, you can pause to take a look at your resources in the Azure portal.
 
-![Image4](media/image3.png)
+![Image4](media/image3a.png)
 
 - When you perform operations against the Azure Cosmos DB Cassandra API, the RU charge is returned in the incoming payload as a field named RequestCharge. In .NET SDK, you can retrieve the incoming payload under the Info property of a RowSet object. You can perform Operations and test RU on VS console.
 
-![Image4a](media/image21.png)
+![Image4a](media/image3b.png)
 
 - Finally, proceed in Visual Studio to test Basic Query Operations on Keyspaces and Tables created in the earlier steps. Finally, we perform a filter operation against weather.data table using a simple filter from a Compound Primary Key which retrieves us a result.
 
