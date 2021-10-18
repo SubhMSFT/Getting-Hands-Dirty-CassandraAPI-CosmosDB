@@ -64,7 +64,7 @@ Key learning include:
 - HOME WORK - To explore increasing Cardinality of the weather.data table by replacing 'identity_id' with [Cassandra timestamp data type](https://docs.datastax.com/en/cql-oss/3.x/cql/cql_reference/timestamp_type_r.html).
 
 ## Core Differences between Apache Cassandra and Azure Cosmos DB API for Cassandra
-Though both allow you to use the Apache Cassandra database, but there's some inherent differences 'Architecturally', 'Conceptually' and 'Realistically' that you must be aware of for using the Azure Cosmos DB API for Cassandra. The core differences have been outlined in the **Comments** section in Visual Studio Solution Program.cs file in this repo. Mentioning it once again for relevance.
+There's some inherent differences 'Architecturally', 'Conceptually' and 'Realistically' that you must be aware of for using the Azure Cosmos DB API for Cassandra. The core differences have been outlined in the **Comments** section in Visual Studio Solution Program.cs file in this repo. Mentioning it once again for relevance.
 
 1. The Azure Cosmos DB Cassandra API is compatible with CQL v3.11 API (backward-compatible with version 2.x).
    Read more > https://docs.microsoft.com/en-us/azure/cosmos-db/cassandra/cassandra-support#cassandra-protocol
