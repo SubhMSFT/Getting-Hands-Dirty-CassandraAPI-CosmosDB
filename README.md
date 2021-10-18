@@ -240,7 +240,7 @@ session.Execute("CREATE TABLE IF NOT EXISTS weather.data (station_id int, ts tim
 ```
 
 ## Links for Further Study
-1. How to Create a Cassandra Data Model by DataStax (Patrick McFadin and Jeff Carpenter will develop a Cassandra data model for a real application—step by step): https://www.youtube.com/watch?v=4D39wJu5Too
+1. How to Create a Cassandra Data Model by DataStax (Patrick McFadin and Jeff Carpenter will develop a Cassandra data model for a real application — step by step): https://www.youtube.com/watch?v=4D39wJu5Too
 2. Official documentation of Microsoft for Azure Cosmos DB API for Cassandra: https://docs.microsoft.com/en-us/azure/cosmos-db/cassandra/cassandra-introduction
 3. 2018 video of Azure Friday | Cassandra API for Azure Cosmos DB (Join Kirill Gavrylyuk and Scott Hanselman to learn about native support for Apache Cassandra API in Azure Cosmos DB with wire protocol level compatibility): https://www.youtube.com/watch?v=gFxJnegGG0o
 4. 2018 Azure Cosmos DB Cassandra API Overview by Govind Kanshi: https://www.youtube.com/watch?v=p3jSVi3ERFg
