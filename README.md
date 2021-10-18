@@ -70,9 +70,9 @@ There's some inherent differences 'Architecturally', 'Conceptually' and 'Realist
    Read more > https://docs.microsoft.com/en-us/azure/cosmos-db/cassandra/cassandra-support#cassandra-protocol
             
 2. Size limits:
-1. total size of data stored in a table on Cosmos = NONE. RULE is: Add TB/PBs of data as long as 'partitionKey' size limits are respected.
-2. total data size of entity (row) should not exceed 2MB.
-3. total data size of a single partitionKey cannot exceed 20GB.
+* total size of data stored in a table on Cosmos = NONE. RULE is: Add TB/PBs of data as long as 'partitionKey' size limits are respected.
+* total data size of entity (row) should not exceed 2MB.
+* total data size of a single partitionKey cannot exceed 20GB.
             
 3. In OSS/DataStax, at Keyspace creation level, you can choose options: replica replacement strategy (SimpleStrategy, NetworkTopologyStrategy), replication factor & durable writes setting.
 ```
@@ -101,15 +101,15 @@ CREATE TABLE sampleks.t1 (user_id int PRIMARY KEY, lastname text) WITH cosmosdb_
    In Cosmos, we use a similar concept, but we use a different # token, and token ring range is different internally (larger), but externally same.
             
 8. Difference in CQL Functions:
-    a) Cosmos supports token as a projection/selector, and only allows token(pk) on the left-hand side of a where clause. 
-    e.g. WHERE token(pk) > 1024 is OK.
-    e.g. WHERE token(pk) > token(100) is **not** supported.
-    b) The cast() function is not nestable in Cassandra API.
-    e.g. SELECT cast(count as double) FROM myTable is supported
-    e.g. SELECT avg(cast(count as double)) FROM myTable is **not** supported.
-    c) Custom timestamps and TTL specified with the USING option are applied at a row level (and not per cell).
-    d) Aggregate functions work on regular columns, but aggregates on clustering columns are not supported.
-    Read more > https://docs.microsoft.com/en-us/azure/cosmos-db/cassandra/cassandra-support#cql-functions
+* Cosmos supports token as a projection/selector, and only allows token(pk) on the left-hand side of a where clause. 
+``` WHERE token(pk) > 1024 is OK. ```
+``` WHERE token(pk) > token(100) is **not** supported. ```
+* The cast() function is not nestable in Cassandra API.
+``` SELECT cast(count as double) FROM myTable is supported. ```
+``` SELECT avg(cast(count as double)) FROM myTable is **not** supported. ```
+* Custom timestamps and TTL specified with the USING option are applied at a row level (and not per cell).
+* Aggregate functions work on regular columns, but aggregates on clustering columns are not supported.
+  Read more > https://docs.microsoft.com/en-us/azure/cosmos-db/cassandra/cassandra-support#cql-functions
 
 9. Specifics around difference between OSS & Cosmos DB API CQL commands > https://docs.microsoft.com/en-us/azure/cosmos-db/cassandra/cassandra-support#cql-commands
 
