@@ -180,7 +180,7 @@ private static int CassandraPort = 10350;                                       
 
 ![Image5](media/image10a.png)
 
-- Finally, we execute a filter against a Non-Primary Key and it throws an error and exists. This is owing to the reason, that Non-Primary Keys cannot be used in a Filter in a Query in the Apache Cassandra database. There are possible solutions given below which you can tinker with to solve this issue.
+- Finally, we execute a filter against a Non-Primary Key and it throws an error. This is owing to the reason, that Non-Primary Keys cannot be used in a Filter in a Query in Apache Cassandra database. There are possible solutions given below which you can tinker with to solve this issue.
 
 
 ## Validate in Azure Portal
