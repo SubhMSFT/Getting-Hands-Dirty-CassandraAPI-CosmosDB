@@ -70,9 +70,9 @@ There's some inherent differences 'Architecturally', 'Conceptually' and 'Realist
    Read more > https://docs.microsoft.com/en-us/azure/cosmos-db/cassandra/cassandra-support#cassandra-protocol
             
 2. Size limits:
-a) total size of data stored in a table on Cosmos = NONE. RULE is: Add TB/PBs of data as long as 'partitionKey' size limits are respected.
-b) total data size of entity (row) should not exceed 2MB.
-c) total data size of a single partitionKey cannot exceed 20GB.
+1. total size of data stored in a table on Cosmos = NONE. RULE is: Add TB/PBs of data as long as 'partitionKey' size limits are respected.
+2. total data size of entity (row) should not exceed 2MB.
+3. total data size of a single partitionKey cannot exceed 20GB.
             
 3. In OSS/DataStax, at Keyspace creation level, you can choose options: replica replacement strategy (SimpleStrategy, NetworkTopologyStrategy), replication factor & durable writes setting.
 ```
