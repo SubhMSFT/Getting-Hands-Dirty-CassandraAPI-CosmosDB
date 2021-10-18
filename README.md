@@ -178,7 +178,7 @@ private static int CassandraPort = 10350;                                       
 
 - Finally, proceed in Visual Studio to test Basic Query Operations on Keyspaces and Tables created in the earlier steps. Finally, we perform a filter operation against weather.data table using a simple filter from a Compound Primary Key which retrieves us a result.
 
-![Image5](media/image10.png)
+![Image5](media/image10a.png)
 
 ## Validate in Azure Portal
 
