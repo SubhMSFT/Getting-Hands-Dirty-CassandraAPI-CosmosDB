@@ -176,7 +176,7 @@ private static int CassandraPort = 10350;                                       
 
 ![Image4a](media/image3b.png)
 
-- We then proceed in VS to test Basic Query Operations on Keyspaces and Tables created in the earlier steps. Finally, we perform a filter operation against weather.data table using a simple filter from a Compound Primary Key which retrieves us a result. You can map the different RU consumption per operation that you do as you go along.
+- We then proceed in VS to test Basic Query Operations on Keyspaces and Tables created in the earlier steps. Finally, we perform a filter operation against weather.data table using a simple filter from a Compound Primary Key which retrieves us a result. You can map different RU consumptions per operation that you perform as you go along.
 
 ![Image5](media/image10a.png)
 
