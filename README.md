@@ -94,7 +94,7 @@ CREATE KEYSPACE  sampleks WITH REPLICATION = {  'class' : 'SimpleStrategy'} AND 
 CREATE TABLE sampleks.t1 (user_id int PRIMARY KEY, lastname text) WITH cosmosdb_provisioned_throughput=2000;
 ```
 
-5. In OSS/DataStax, recommended PrimaryKey (partitionKey) should be < 100MB-limit. 
+5. In OSS/DataStax, recommended PrimaryKey (partitionKey) should be < 100MB-limit. Best practice recommendation is to store up to 100,000 rows in 1 partition in OSS Cassandra.
    In Cosmos, single partitionKey size can be of limit 20GB (per logical partition), 30GB (per physical partition). Each PPartition = 10,000 RUs.
    
 6. In OSS/DataStax, Cassandra a replication factor is mentioned during creation time; e.g. 1.
