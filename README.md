@@ -97,7 +97,7 @@ CREATE TABLE sampleks.t1 (user_id int PRIMARY KEY, lastname text) WITH cosmosdb_
 5. In OSS/DataStax, recommended PrimaryKey (partitionKey) should be < 100MB-limit. Best practice recommendation is to store up to 100,000 rows in 1 partition in OSS Cassandra.
    In Cosmos, single partitionKey size can be of limit 20GB (per logical partition), 30GB (per physical partition). Each PPartition = 10,000 RUs.
    
-6. In OSS/DataStax, Cassandra a replication factor is mentioned during creation time; e.g. 1.
+6. In OSS/DataStax, Cassandra a replication factor is mentioned during creation time; e.g.
    In Cosmos, there is (by default) a replication factor = 4 (quorum of 3). Microsoft manages replica sets, you can sleep nicely at night.
             
 7. In OSS/DataStax, Cassandra has an important concept of tokens (# of partitionKey(fx)). TokenRing = murmur3 64 byte hash, with values ranging from -2^63 to -2^63 - 1.
